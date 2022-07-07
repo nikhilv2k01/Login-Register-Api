@@ -8,7 +8,7 @@ class PatientRegSerializer(serializers.ModelSerializer):
     class Meta:
         model = PatientRegister
         fields = ['firstname', 'lastname', 'username',
-                  'email', 'password1', 'password2']
+                  'email','phone_number', 'password1', 'password2']
 
 
 # Patient Login Serializer

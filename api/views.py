@@ -9,9 +9,9 @@ from rest_framework.response import Response
 
 # Create your views here.
 
+
+
 # Patient Register
-
-
 @api_view(['POST'])
 def patient_register(request):
 
