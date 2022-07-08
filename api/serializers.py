@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import *
-from dataclasses import fields
 
 
 # Patient Register Serializer

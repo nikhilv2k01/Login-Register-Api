@@ -14,7 +14,7 @@ from rest_framework.response import Response
 # Patient Register
 @api_view(['POST'])
 def patient_register(request):
-
+ 
     patient_data = JSONParser().parse(request)
     patient_serializer = PatientRegSerializer(data=patient_data)
 
