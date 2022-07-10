@@ -1,8 +1,8 @@
 from django.db import models
-
 # Create your models here.
 
-# Patient Register 
+
+# Patient Register
 class PatientRegister(models.Model):
     patient_id = models.AutoField(primary_key=True)
     firstname = models.CharField(max_length=20)
@@ -13,7 +13,6 @@ class PatientRegister(models.Model):
     password1 = models.CharField(max_length=10)
     password2 = models.CharField(max_length=10)
 
-
     class Meta:
         db_table = "patient_register"
 
@@ -21,6 +20,7 @@ class PatientRegister(models.Model):
 # Tech Support Register
 class TechRegister(models.Model):
     tech_id = models.AutoField(primary_key=True)
+    patient_fk = models.ForeignKey(PatientRegister,on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
     username = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
@@ -33,10 +33,10 @@ class TechRegister(models.Model):
         db_table = "tech_register"
 
 
-# Doctor Register 
+# Doctor Register
 class DoctorRegister(models.Model):
     doctor_id = models.AutoField(primary_key=True)
-    doctor_fk = models.ForeignKey(PatientRegister,on_delete=models.CASCADE)
+    patient_fk = models.ForeignKey(PatientRegister, on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
     username = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)

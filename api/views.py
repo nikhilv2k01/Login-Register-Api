@@ -10,11 +10,10 @@ from rest_framework.response import Response
 # Create your views here.
 
 
-
 # Patient Register
 @api_view(['POST'])
 def patient_register(request):
- 
+
     patient_data = JSONParser().parse(request)
     patient_serializer = PatientRegSerializer(data=patient_data)
 
@@ -28,7 +27,7 @@ def patient_register(request):
         if not queryset:
             if password1 == password2:
                 patient_serializer.save()
-                return JsonResponse({'message': 'Patient registered successfully'})
+                return JsonResponse({'message': 'success'})
             else:
                 return JsonResponse({'message': 'Password does not match'})
         else:
@@ -57,7 +56,7 @@ def patient_login(request):
 
     if patient_serializer.is_valid():
         if user_exist:
-            return JsonResponse({'message': 'Success'})
+            return JsonResponse({'message': 'success'})
         else:
             return JsonResponse({'message': 'Please enter a vaild details'})
     return JsonResponse(patient_serializer.errors)
@@ -129,7 +128,7 @@ def tech_login(request):
 def tech_display(request):
     tech_data = TechRegister.objects.all()
     json_data = [{'id': i.tech_id, 'name': i.name, 'username': i.username,
-                  'email': i.email, 'phone_number': i.phone_number,'address': i.address, 'password1': i.password1, 'password2': i.password2, }for i in tech_data]
+                  'email': i.email, 'phone_number': i.phone_number, 'address': i.address, 'password1': i.password1, 'password2': i.password2, }for i in tech_data]
     return JsonResponse({'message': json_data})
 
 
@@ -190,5 +189,5 @@ def doctor_login(request):
 def doctor_display(request):
     doctor_data = DoctorRegister.objects.all()
     json_data = [{'id': i.doctor_id, 'name': i.name, 'username': i.username,
-                  'email': i.email, 'phone_number': i.phone_number,'hospital_address': i.hospital_address, 'password1': i.password1, 'password2': i.password2, }for i in doctor_data]
+                  'email': i.email, 'phone_number': i.phone_number, 'hospital_address': i.hospital_address, 'password1': i.password1, 'password2': i.password2, }for i in doctor_data]
     return JsonResponse({'message': json_data})

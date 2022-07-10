@@ -7,7 +7,7 @@ class PatientRegSerializer(serializers.ModelSerializer):
     class Meta:
         model = PatientRegister
         fields = ['firstname', 'lastname', 'username',
-                  'email','phone_number', 'password1', 'password2']
+                  'email', 'phone_number', 'password1', 'password2']
 
 
 # Patient Login Serializer
@@ -15,13 +15,6 @@ class PatientLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = PatientRegister
         fields = ['username', 'password1']
-
-
-# # Patient Display Serializer
-# class PatientDisplaySerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = PatientRegister
-#         fields = '_all_'
 
 
 # Tech Support Register Serializer
@@ -39,13 +32,6 @@ class TechLoginSerializer(serializers.ModelSerializer):
         fields = ['username', 'password1']
 
 
-# # Tech Display Serializer
-# class TechtDisplaySerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = TechRegister
-#         fields = '_all_'
-
-
 # Doctor Register Serializer
 class DoctorRegSerializer(serializers.ModelSerializer):
     class Meta:
@@ -59,10 +45,3 @@ class DoctorLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = DoctorRegister
         fields = ['username', 'password1']
-
-
-# # Doctor Display Serializer
-# class DoctorDisplaySerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = DoctorRegister
-#         fields = '_all_'
